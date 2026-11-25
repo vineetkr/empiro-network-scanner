@@ -1,0 +1,1 @@
+<Project Sdk="Microsoft.NET.Sdk"><ItemGroup><ProjectReference Include="../Empiro.Inventory/Empiro.Inventory.csproj" /><ProjectReference Include="../Empiro.Monitoring/Empiro.Monitoring.csproj" /><PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.13" /><PackageReference Include="System.Security.Cryptography.ProtectedData" Version="10.0.13" /></ItemGroup></Project>

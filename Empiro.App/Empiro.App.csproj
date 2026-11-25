@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net10.0-windows</TargetFramework><UseWPF>true</UseWPF><AssemblyName>Empiro</AssemblyName><ApplicationManifest>app.manifest</ApplicationManifest><ApplicationIcon>Assets/Empiro.ico</ApplicationIcon></PropertyGroup>
+  <ItemGroup><Resource Include="Assets/*.jpeg"/><Resource Include="Assets/Empiro.ico"/></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../EMPiro.Discovery/EMPiro.Discovery.csproj" />
+    <ProjectReference Include="../EMPiro.CCTV/EMPiro.CCTV.csproj" />
+    <ProjectReference Include="../EMPiro.Infrastructure/EMPiro.Infrastructure.csproj" />
+    <ProjectReference Include="../EMPiro.IPAM/EMPiro.IPAM.csproj" />
+    <ProjectReference Include="../EMPiro.Topology/EMPiro.Topology.csproj" />
+    <ProjectReference Include="../EMPiro.Security/EMPiro.Security.csproj" />
+    <ProjectReference Include="../EMPiro.Reporting/EMPiro.Reporting.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.13" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,26 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="Empiro Network Scanner (Release Candidate)" Manufacturer="Empiro" Version="$(var.ProductVersion)" Language="1033" UpgradeCode="91A3DBF8-5640-464F-A8D6-7F8C6C7A8739" Scope="perMachine" InstallerVersion="500">
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Empiro is already installed." Schedule="afterInstallInitialize" />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+    <Launch Condition="VersionNT64" Message="Empiro requires 64-bit Windows. This release is qualified for Windows 11 x64." />
+    <Icon Id="EmpiroIcon" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="EmpiroIcon" />
+    <Property Id="ARPNOMODIFY" Value="1" />
+    <UIRef Id="EmpiroSetupUI" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Empiro is installed. Open Empiro Network Scanner from the Windows Start menu." />
+    <StandardDirectory Id="ProgramFiles64Folder"><Directory Id="INSTALLFOLDER" Name="Empiro" /></StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder"><Directory Id="EmpiroMenu" Name="Empiro" /></StandardDirectory>
+    <Feature Id="EmpiroApplication" Title="Empiro Network Scanner" Level="1">
+      <Files Include="$(var.PublishDir)\**" Directory="INSTALLFOLDER">
+        <Exclude Files="$(var.PublishDir)\Empiro.exe" />
+      </Files>
+      <Component Id="EmpiroExecutable" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="EmpiroExe" Source="$(var.PublishDir)\Empiro.exe" KeyPath="yes">
+          <Shortcut Id="StartEmpiro" Directory="EmpiroMenu" Name="Empiro Network Scanner" Advertise="yes" WorkingDirectory="INSTALLFOLDER" Icon="EmpiroIcon" />
+          <Shortcut Id="DemoEmpiro" Directory="EmpiroMenu" Name="Empiro Demo" Advertise="yes" Arguments="--preview" WorkingDirectory="INSTALLFOLDER" Icon="EmpiroIcon" />
+        </File>
+        <RemoveFolder Id="RemoveEmpiroMenu" Directory="EmpiroMenu" On="uninstall" />
+      </Component>
+    </Feature>
+  </Package>
+</Wix>
